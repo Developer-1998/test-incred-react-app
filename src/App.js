@@ -1,25 +1,55 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
 function App() {
+  const [firstname, setFirstname] = React.useState("");
+  const [lastname, setLastname] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const onChangeFirstName = (e) => {
+    setFirstname(e.target.value);
+  }
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  }
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  }
+  const onChangeLastName = (e) => {
+    setLastname(e.target.value);
+  }
+  const onSubmit = () => {
+    localStorage.setItem("firstName", firstname)
+    localStorage.setItem("lastName", lastname)
+    localStorage.setItem("email", email)
+    localStorage.setItem("pass", password)
+    alert("successfully signedup")
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <form onSubmit={onSubmit}>
+          <div>
+            <h2>Signup Form</h2>
+          </div>
+          <div>
+            <input className='input' type='text' value={firstname} onChange={onChangeFirstName} placeholder='First  Name' required/>
+          </div>
+          <div>
+            <input className='input' type='text' value={lastname} onChange={onChangeLastName} placeholder='Last Name' required/>
+          </div>
+          <div>
+            <input className='input' type="email" value={email} onChange={onChangeEmail}  placeholder='Email'required/>
+          </div>
+          <div>
+            <input className='input' type="password" value={password} onChange={onChangePassword} placeholder='Password' required/>
+          </div>
+          <div>
+            <button type='submit' style={{cursor:'pointer'}} >Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
-
 export default App;
