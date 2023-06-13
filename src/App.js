@@ -19,10 +19,7 @@ function App() {
     setLastname(e.target.value);
   }
   const onSubmit = () => {
-    localStorage.setItem("firstName", firstname)
-    localStorage.setItem("lastName", lastname)
-    localStorage.setItem("email", email)
-    localStorage.setItem("pass", password)
+    localStorage.setItem("formData", JSON.stringify({ "fname": firstname, "lname": lastname, "em": email, "pass": password }))
     alert("successfully signedup")
   }
   return (
@@ -33,19 +30,19 @@ function App() {
             <h2>Signup Form</h2>
           </div>
           <div>
-            <input className='input' type='text' value={firstname} onChange={onChangeFirstName} placeholder='First  Name' required/>
+            <input className='input' type='text' value={firstname} onChange={onChangeFirstName} placeholder='First  Name' required />
           </div>
           <div>
-            <input className='input' type='text' value={lastname} onChange={onChangeLastName} placeholder='Last Name' required/>
+            <input className='input' type='text' value={lastname} onChange={onChangeLastName} placeholder='Last Name' required />
           </div>
           <div>
-            <input className='input' type="email" value={email} onChange={onChangeEmail}  placeholder='Email'required/>
+            <input className='input' type="email" value={email} onChange={onChangeEmail} placeholder='Email' required />
           </div>
           <div>
-            <input className='input' type="password" value={password} onChange={onChangePassword} placeholder='Password' required/>
+            <input className='input' type="password" value={password} onChange={onChangePassword} placeholder='Password' required />
           </div>
           <div>
-            <button type='submit' style={{cursor:'pointer'}} >Submit</button>
+            <button type='submit' style={{ cursor: 'pointer' }} >Submit</button>
           </div>
         </form>
       </div>
